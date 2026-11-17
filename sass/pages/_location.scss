@@ -1,0 +1,477 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins" as mixins;
+
+// ========================================
+// MAPA Y NAVEGACIÓN
+// ========================================
+
+.location-map {
+  position: relative;
+  width: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 264px;
+    height: 72px;
+
+    background-color: variables.$color-black;
+    color: variables.$color-white;
+    text-decoration: none;
+
+    span {
+      flex: 1;
+      text-align: center;
+      font-family: variables.$font-primary;
+      font-size: 16px;
+      font-weight: variables.$font-black;
+      letter-spacing: 3px;
+    }
+
+    &::before {
+      content: "‹";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 56px;
+      height: 72px;
+
+      background-color: variables.$color-terracotta;
+      color: variables.$color-white;
+      font-size: 28px;
+    }
+  }
+}
+
+// ========================================
+// INFORMACIÓN DE UBICACIÓN
+// ========================================
+
+.main-location {
+  background-color: variables.$color-black;
+  padding-bottom: 56px;
+}
+
+.location-info {
+  padding: 48px 16px 0;
+  color: variables.$color-white;
+
+  h1 {
+    font-family: variables.$font-primary;
+    font-weight: variables.$font-black;
+    font-size: 50px;
+  }
+
+  &__content {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__street {
+    color: variables.$color-terracotta;
+    font-family: variables.$font-primary;
+    font-weight: variables.$font-black;
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+
+  &__address {
+    margin-top: 20px;
+    font-family: variables.$font-secondary;
+    font-style: normal;
+    font-size: 18px;
+  }
+
+  &__description {
+    margin-top: 20px;
+    margin-bottom: 56px;
+    font-family: variables.$font-secondary;
+    font-size: 18px;
+  }
+}
+
+// ========================================
+// FOOTER LOCATION
+// ========================================
+
+.footer-location {
+  background-color: variables.$color-terracotta;
+  margin-top: 0;
+  color: variables.$color-black;
+  padding: 48px 32px;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: variables.$color-black;
+  }
+
+  .footer-title {
+    font-family: variables.$font-primary;
+    font-weight: variables.$font-black;
+  }
+
+  .footer-text {
+    padding-top: 38px;
+    font-family: variables.$font-secondary;
+    font-size: 16px;
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 38px;
+  }
+}
+
+// ========================================
+// TABLET
+// ========================================
+
+@include mixins.respond-to(tablet) {
+  // MAPA Y NAVEGACIÓN
+
+  .location-map {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    &__button {
+      top: 0;
+      left: 39px;
+      width: 264px;
+      height: 72px;
+
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+
+  // INFORMACIÓN DE UBICACIÓN
+
+  .main-location {
+    background-color: variables.$color-black;
+    padding-bottom: 0;
+  }
+
+  .location-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 68px;
+
+    width: 100%;
+    height: 436px;
+    padding: 84px 39px;
+
+    background-color: variables.$color-black;
+    color: variables.$color-white;
+
+    // TÍTULO PRINCIPAL
+
+    h1 {
+      width: 223px;
+      flex-shrink: 0;
+      margin: 0;
+
+      font-family: variables.$font-primary;
+      font-size: 55px;
+      font-weight: variables.$font-black;
+      line-height: 50px;
+      color: variables.$color-white;
+    }
+
+    // CONTENEDOR DE DIRECCIÓN Y DESCRIPCIÓN
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      width: 398px;
+      flex-shrink: 0;
+      margin: 0;
+    }
+
+    &__street {
+      font-family: variables.$font-primary;
+      font-size: 32px;
+      font-weight: variables.$font-black;
+      line-height: 32px;
+      color: variables.$color-terracotta;
+    }
+
+    &__address {
+      width: 100%;
+      margin-top: 20px;
+
+      font-family: variables.$font-secondary;
+      font-size: 18px;
+      font-weight: variables.$font-light;
+      line-height: 28px;
+      font-style: normal;
+    }
+
+    &__description {
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      font-family: variables.$font-secondary;
+      font-size: 18px;
+      font-weight: variables.$font-light;
+      line-height: 28px;
+    }
+  }
+
+  // FOOTER LOCATION - TABLET
+
+  .footer-location {
+    width: 100%;
+    height: 216px;
+    margin-top: 0;
+    padding: 48px 39px;
+
+    .footer-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+    }
+
+    .footer-title {
+      margin: 0;
+    }
+
+    .footer-text {
+      max-width: 250px;
+      margin: 0;
+      padding-top: 0;
+      font-size: 16px;
+    }
+
+    .footer-social {
+      padding-top: 0;
+      margin: 0;
+    }
+  }
+}
+
+// ========================================
+// DESKTOP - LOCATION
+// ========================================
+
+@include mixins.respond-to(desktop) {
+  // MAPA Y NAVEGACIÓN
+  .location-map {
+    width: 100%;
+    height: 600px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    &__button {
+      position: absolute;
+      top: 0;
+      left: 165px;
+
+      width: 264px;
+      height: 72px;
+
+      &::before {
+        width: 56px;
+        height: 72px;
+      }
+
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+
+  // BLOQUE NEGRO DE INFORMACIÓN
+  .main-location {
+    width: 100%;
+    padding: 0;
+    background-color: variables.$color-black;
+  }
+
+  .location-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 548px;
+
+    margin: 0;
+    padding: 0 165px;
+
+    background-color: variables.$color-black;
+    color: variables.$color-white;
+
+    // TÍTULO PRINCIPAL
+    h1 {
+      width: 350px;
+      height: 140px;
+      margin: 0;
+
+      font-family: variables.$font-primary;
+      font-size: 70px;
+      font-weight: variables.$font-black;
+      line-height: 70px;
+      letter-spacing: 0;
+      color: variables.$color-white;
+    }
+
+    // CONTENEDOR DE DIRECCIÓN Y DESCRIPCIÓN
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      width: 540px;
+      margin: 0;
+    }
+
+    // CALLE
+    &__street {
+      width: 350px;
+      height: 36px;
+      margin: 0;
+
+      font-family: variables.$font-primary;
+      font-size: 36px;
+      font-weight: variables.$font-black;
+      line-height: 36px;
+      letter-spacing: 0;
+      color: variables.$color-terracotta;
+    }
+
+    // DIRECCIÓN POSTAL
+    &__address {
+      width: 445px;
+      height: 96px;
+      margin-top: 12px;
+      margin-bottom: 20px;
+
+      font-family: variables.$font-secondary;
+      font-size: 22px;
+      font-weight: variables.$font-light;
+      line-height: 32px;
+      letter-spacing: 0;
+      font-style: normal;
+      color: variables.$color-white;
+    }
+
+    &__description {
+      width: 540px;
+      height: 128px;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      font-family: variables.$font-secondary;
+      font-size: 22px;
+      font-weight: variables.$font-light;
+      line-height: 32px;
+      letter-spacing: 0;
+      color: variables.$color-white;
+    }
+  }
+}
+.footer-location {
+  width: 100%;
+  height: 244px;
+
+  margin: 0;
+  padding: 80px 0;
+
+  background-color: variables.$color-terracotta;
+  color: variables.$color-black;
+
+  .footer-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 1110px;
+    height: 84px;
+
+    margin: 0 auto;
+    padding: 0;
+
+    color: variables.$color-black;
+  }
+
+  .footer-title {
+    margin: 0;
+
+    font-family: variables.$font-primary;
+    font-size: 24px;
+    font-weight: variables.$font-black;
+    line-height: 0.9;
+  }
+
+  .footer-text {
+    width: 430px;
+    max-width: 430px;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: variables.$font-secondary;
+    font-size: 18px;
+    font-weight: variables.$font-light;
+    line-height: 1.5;
+  }
+
+  .footer-social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    a {
+      display: block;
+    }
+
+    img {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

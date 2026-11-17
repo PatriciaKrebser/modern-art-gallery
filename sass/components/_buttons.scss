@@ -1,0 +1,22 @@
+@use "../abstracts/variables";
+
+// BOTONES DE NAVEGACIÓN
+
+.location-button,
+.location-map__button {
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: variables.$color-terracotta;
+  }
+
+  &:hover::after,
+  &:hover::before {
+    background-color: variables.$color-black;
+  }
+
+  &:focus-visible {
+    outline: 3px solid variables.$color-terracotta;
+    outline-offset: 4px;
+  }
+}

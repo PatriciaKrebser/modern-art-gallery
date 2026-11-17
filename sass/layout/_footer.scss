@@ -1,0 +1,135 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins" as mixins;
+
+.footer {
+  background-color: variables.$color-black;
+  margin-top: 120px;
+  padding: 48px 32px;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: variables.$color-white;
+  }
+  .footer-title {
+    font-family: variables.$font-primary;
+    font-weight: variables.$font-black;
+  }
+  .footer-text {
+    font-family: variables.$font-secondary;
+    font-size: 16px;
+    padding-top: 38px;
+  }
+  .footer-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding-top: 38px;
+  }
+}
+
+@include mixins.respond-to(tablet) {
+  .footer {
+    width: 100%;
+    height: 216px;
+    margin-top: 120px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 48px 39px;
+
+    .footer-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      top: -8px;
+      gap: 0;
+    }
+
+    .footer-title {
+      margin: 0;
+    }
+
+    .footer-text {
+      max-width: 250px;
+      padding-top: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .footer-icons {
+      padding-top: 0;
+      margin: 0;
+      gap: 12px;
+    }
+  }
+}
+
+@include mixins.respond-to(desktop) {
+  .footer {
+    width: 100%;
+    height: 244px;
+
+    margin-top: 180px;
+    padding: 80px 0;
+
+    .footer-content {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      width: 1110px;
+      height: 84px;
+
+      margin: 0 auto;
+      padding: 0;
+
+      position: static;
+      gap: 0;
+    }
+
+    .footer-title {
+      margin: 0;
+
+      font-family: variables.$font-primary;
+      font-size: 24px;
+      font-weight: variables.$font-black;
+      line-height: 0.9;
+    }
+
+    .footer-text {
+      width: 430px;
+      max-width: 430px;
+
+      margin: 0;
+      padding: 0;
+
+      font-family: variables.$font-secondary;
+      font-size: 18px;
+      font-weight: variables.$font-light;
+      line-height: 1.5;
+    }
+
+    .footer-icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+
+      margin: 0;
+      padding: 0;
+
+      img {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

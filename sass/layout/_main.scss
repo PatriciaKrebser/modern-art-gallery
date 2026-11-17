@@ -1,0 +1,286 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins" as mixins;
+
+.hero {
+  margin-top: 120px;
+  width: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.hero-content {
+  padding: 0;
+  h2 {
+    margin-top: 24px;
+    font-family: variables.$font-primary;
+    font-size: 50px;
+    font-weight: variables.$font-black;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  p {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-family: variables.$font-secondary;
+    font-size: 18px;
+    max-width: 343px;
+  }
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.box {
+  margin-top: 16px;
+  padding: 48px 24px;
+  background-color: variables.$color-black;
+  color: variables.$color-white;
+
+  h2 {
+    font-family: variables.$font-primary;
+    font-size: 50px;
+    font-weight: variables.$font-black;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  p {
+    max-width: 295px;
+    margin-top: 24px;
+    font-family: variables.$font-secondary;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+@include mixins.respond-to(tablet) {
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 223px 398px;
+    grid-template-rows: 400px;
+    column-gap: 68px;
+    margin-bottom: 0;
+    padding-left: 39px;
+    padding-right: 40px;
+    margin-top: 120px;
+    margin-bottom: 120px;
+
+    min-height: 1131px;
+  }
+
+  // PRIMER BLOQUE: TEXTO E IMAGEN
+
+  .hero > img {
+    grid-column: 2;
+    grid-row: 1;
+    width: 398px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    grid-column: 1;
+    grid-row: 1;
+
+    h2 {
+      margin-top: 0;
+      font-size: 50px;
+      line-height: 0.9;
+    }
+
+    p {
+      max-width: 220px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+
+  // SEGUNDO BLOQUE: GALERÍA DE IMÁGENES
+
+  .images {
+    display: contents;
+  }
+
+  .hero .images .image-left {
+    position: absolute;
+    top: 411px;
+    left: 39px;
+    width: 398px;
+    height: 720px;
+    object-fit: cover;
+  }
+
+  .hero .images .image-right {
+    position: absolute;
+    top: 411px;
+    left: 448px;
+    width: 280px;
+    height: 313px;
+    object-fit: cover;
+  }
+
+  // BLOQUE NEGRO
+
+  .box {
+    position: absolute;
+    top: 735px;
+    left: 448px;
+
+    width: 280px;
+    height: 396px;
+    margin-top: 0;
+    padding-top: 64px;
+
+    h2 {
+      font-size: 50px;
+      line-height: 0.9;
+    }
+
+    p {
+      width: 223px;
+      max-width: 100%;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+  }
+}
+
+// ========================================
+// DESKTOP
+// ========================================
+
+@include mixins.respond-to(desktop) {
+  .hero {
+    display: grid;
+    grid-template-columns: 635px 30px 445px;
+    grid-template-rows: 400px 313px 377px;
+
+    column-gap: 0;
+    row-gap: 30px;
+
+    width: 1110px;
+    height: 1150px;
+
+    margin: 180px auto;
+    padding: 0;
+
+    // TEXTO INTRODUCTORIO
+    .hero-content {
+      grid-column: 1;
+      grid-row: 1;
+
+      width: 350px;
+      height: 280px;
+
+      margin-top: 60px;
+      padding: 0;
+
+      h2 {
+        margin: 0;
+        font-size: 60px;
+        line-height: 0.9;
+      }
+
+      p {
+        max-width: 350px;
+        margin-top: 24px;
+        margin-bottom: 0;
+        font-size: 18px;
+        line-height: 28px;
+      }
+    }
+
+    // IMAGEN SUPERIOR
+    > img {
+      grid-column: 1 / 4;
+      grid-row: 1;
+      justify-self: end;
+
+      width: 635px;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    // CONTENEDOR DE IMÁGENES
+    .images {
+      display: contents;
+    }
+
+    // IMAGEN GRANDE IZQUIERDA
+    & .images .image-left {
+      position: static;
+
+      grid-column: 1;
+      grid-row: 2 / 4;
+
+      width: 635px;
+      height: 720px;
+      object-fit: cover;
+    }
+
+    // IMAGEN SUPERIOR DERECHA
+    & .images .image-right {
+      position: static;
+
+      grid-column: 3;
+      grid-row: 2;
+
+      width: 445px;
+      height: 313px;
+      object-fit: cover;
+    }
+
+    // CAJA NEGRA
+    .box {
+      position: static; // AGREGAR ESTA LÍNEA
+
+      grid-column: 3;
+      grid-row: 3;
+
+      width: 445px;
+      height: 377px;
+
+      margin: 0;
+      padding: 65px 47px 64px 48px;
+
+      h2 {
+        margin: 0;
+
+        font-family: variables.$font-primary;
+        font-size: 60px;
+        font-weight: variables.$font-black;
+        line-height: 60px;
+        letter-spacing: 0;
+        text-align: left;
+        text-transform: uppercase;
+      }
+      p {
+        width: 350px;
+        max-width: 100%;
+        margin-top: 24px;
+
+        font-family: variables.$font-secondary;
+        font-size: 22px;
+        font-weight: variables.$font-light;
+        line-height: 32px;
+        letter-spacing: 0;
+        text-align: left;
+        color: variables.$color-white;
+      }
+    }
+  }
+}

@@ -1,0 +1,204 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins" as mixins;
+
+.header {
+  width: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  h1,
+  p,
+  .location-button {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  h1 {
+    margin-top: 32px;
+    font-family: variables.$font-primary;
+    font-size: 60px;
+    font-weight: variables.$font-black;
+    line-height: 0.9;
+  }
+
+  p {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-family: variables.$font-secondary;
+    font-size: 18px;
+  }
+  .location-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 260px;
+    height: 72px;
+
+    background-color: variables.$color-black;
+    color: variables.$color-white;
+
+    font-family: variables.$font-primary;
+    font-size: 20px;
+    font-weight: variables.$font-black;
+    letter-spacing: 3px;
+    text-decoration: none;
+
+    padding-left: 24px;
+
+    &::after {
+      content: "›";
+      width: 56px;
+      height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: variables.$color-terracotta;
+      color: variables.$color-white;
+      font-size: 32px;
+    }
+  }
+}
+
+@include mixins.respond-to(tablet) {
+  .header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 48px;
+    align-content: start;
+    min-height: 700px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 437px;
+      height: 700px;
+      object-fit: cover;
+    }
+
+    h1,
+    p,
+    .location-button {
+      grid-column: 2;
+      margin-left: -20px;
+      margin-right: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      grid-row: 1;
+      margin-top: 145px;
+      margin-bottom: 0;
+      font-size: 70px;
+    }
+
+    p {
+      grid-row: 2;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 18px;
+      max-width: 339px;
+    }
+
+    .location-button {
+      grid-row: 3;
+    }
+  }
+}
+
+@include mixins.respond-to(desktop) {
+  .header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 450px 540px 285px;
+    grid-template-rows: 800px;
+
+    width: 100%;
+    max-width: 1275px;
+    height: 800px;
+    margin: 0;
+
+    // BLOQUE NEGRO
+    &::before {
+      content: "";
+      grid-column: 1;
+      grid-row: 1;
+      background-color: variables.$color-black;
+    }
+
+    // IMAGEN CENTRAL
+    img {
+      grid-column: 2;
+      grid-row: 1;
+
+      width: 540px;
+      height: 800px;
+      object-fit: cover;
+    }
+
+    // H1
+    h1 {
+      position: absolute;
+      grid-column: 1 / 4;
+      grid-row: 1;
+
+      top: 189px;
+      left: 165px;
+      z-index: 3;
+
+      width: 514px;
+      margin: 0;
+
+      font-family: variables.$font-primary;
+      font-size: 96px;
+      font-weight: variables.$font-black;
+      line-height: 88px;
+      color: variables.$color-white;
+    }
+
+    // PÁRRAFO
+    p {
+      position: absolute;
+      grid-column: 1 / 4;
+      grid-row: 1;
+
+      top: 190px;
+      left: 925px;
+      z-index: 3;
+
+      width: 350px;
+      height: 160px;
+      margin: 0;
+
+      font-family: variables.$font-secondary;
+      font-size: 22px;
+      font-weight: variables.$font-light;
+      line-height: 32px;
+      color: variables.$color-black;
+    }
+    .location-button {
+      position: absolute;
+      grid-column: 1 / 4;
+      grid-row: 1;
+
+      top: 414px;
+      left: 925px;
+
+      width: 260px;
+      height: 72px;
+      margin: 0;
+      z-index: 3;
+    }
+  }
+}

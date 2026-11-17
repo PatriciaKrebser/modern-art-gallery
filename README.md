@@ -35,8 +35,6 @@ Modern Art Gallery/
 
 ## Instalación
 
-Clonar el repositorio e instalar las dependencias:
-
 ```bash
 npm install
 ```

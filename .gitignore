@@ -1,10 +1,10 @@
-
 # Dependencias
 node_modules/
 
 # Archivos generados
 dist/
 css/style.css
+css/style.css.map
 
 # Archivos del sistema
 .DS_Store
@@ -13,5 +13,3 @@ Thumbs.db
 # Variables de entorno
 .env
 .env.local
-
-css/style.css.map
